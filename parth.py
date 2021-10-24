@@ -15,6 +15,11 @@ def group_making(size=2):
     #all_combs_list = combination_gen(Student.all_students)
     combs_scores = compatability_score(all_combs_list, size)
     print(combs_scores)
+    index = combs_scores.index(max(combs_scores))
+    #print(all_combs_list[index][0])
+    for a,b in all_combs_list[index]:
+        print(a.name, b.name)
+    #print((x.name, y.name) for (x,y) in all_combs_list[combs_scores.index(max(combs_scores))])
     
 def generate_groups(lst, n):
     if not lst:
@@ -46,7 +51,7 @@ def compatability_score(all_combs_list, size):
             score_list[i].append( s/len(student1.times) )
             
         if min(score_list[i]) > 0:
-            score_worlds.append( sum(score_list[i])/size )
+            score_worlds.append( sum(score_list[i]) )
         else: 
             score_worlds.append(0)
         i+=1
